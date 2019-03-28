@@ -1,0 +1,72 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE generatorConfiguration-->
+        <!--PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"-->
+        <!--"http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">-->
+<!--<generatorConfiguration>-->
+    <!--&lt;!&ndash;导入属性配置&ndash;&gt;-->
+    <!--<properties resource="application.yml"></properties>-->
+    <!--&lt;!&ndash;指定特定数据库的jdbc驱动jar包的位置&ndash;&gt;-->
+    <!--<classPathEntry location="C:\application\apache-maven-3.6.0\repository\mysql\mysql-connector-java\8.0.12\mysql-connector-java-8.0.12.jar"/>-->
+
+    <!--<context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">-->
+
+        <!--&lt;!&ndash;beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； &ndash;&gt;-->
+        <!--<property name="beginningDelimiter" value="`"/>-->
+        <!--<property name="endingDelimiter" value="`"/>-->
+        <!--&lt;!&ndash; 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 &ndash;&gt;-->
+        <!--<property name="javaFileEncoding" value="UTF-8"/>-->
+
+        <!--&lt;!&ndash;自动实现Serializable接口&ndash;&gt;-->
+        <!--<plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>-->
+        <!--&lt;!&ndash;去除生成的注释 &ndash;&gt;-->
+        <!--<commentGenerator>-->
+            <!--<property name="suppressDate" value="false"/>-->
+            <!--&lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;-->
+            <!--<property name="suppressAllComments" value="false"/>-->
+        <!--</commentGenerator>-->
+        <!--&lt;!&ndash;数据库基本信息&ndash;&gt;-->
+        <!--<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"-->
+                        <!--connectionURL="jdbc:mysql://127.0.0.1:3306/alvin?useSSL=true" userId="root" password="root"/>-->
+
+        <!--&lt;!&ndash;指定生成的类型为java类型，避免数据库中number等类型字段 &ndash;&gt;-->
+        <!--<javaTypeResolver>-->
+            <!--<property name="forceBigDecimals" value="false"/>-->
+        <!--</javaTypeResolver>-->
+
+        <!--&lt;!&ndash;自动生成的实体data object的存放包路径 &ndash;&gt;-->
+        <!--<javaModelGenerator-->
+                <!--targetPackage="com.example.spring.windmill.mybatis.dataobject.generator"-->
+                <!--targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+            <!--<property name="trimStrings" value="true"/>-->
+        <!--</javaModelGenerator>-->
+
+        <!--&lt;!&ndash;自动生成的*Mapper.xml文件存放路径 &ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="com.example.spring.windmill.mybatis.mapper.generator"-->
+                         <!--targetProject="src/main/resources/">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
+
+        <!--&lt;!&ndash;自动生成的*Mapper.java存放路径 &ndash;&gt;-->
+        <!--<javaClientGenerator type="XMLMAPPER"-->
+                             <!--targetPackage="com.example.spring.windmill.mybatis.mapper.generator"-->
+                             <!--targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
+
+        <!--&lt;!&ndash;对应的表名，以及实体名&ndash;&gt;-->
+        <!--<table tableName="goods" domainObjectName="GoodsDO"-->
+               <!--enableCountByExample="true"-->
+               <!--enableUpdateByExample="false"-->
+               <!--enableDeleteByExample="false"-->
+               <!--enableSelectByExample="true"-->
+               <!--selectByExampleQueryId="true">-->
+            <!--<generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+            <!--<columnOverride column="code" javaType="java.lang.Long" jdbcType="INTEGER"/>-->
+            <!--<columnOverride column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="barcode" javaType="java.lang.String" jdbcType="VARCHAR"/>-->
+            <!--<columnOverride column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>-->
+            <!--<columnOverride column="stock" javaType="java.lang.Long" jdbcType="INTEGER"/>-->
+        <!--</table>-->
+    <!--</context>-->
+<!--</generatorConfiguration>-->
