@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 配置成你本地的mysql-connector-java jar -->
+    <!--<classPathEntry-->
+    <!--location="C:\application\apache-maven-3.6.0\repository\mysql\mysql-connector-java\8.0.13\mysql-connector-java-8.0.13.jar"/>-->
+    <context id="mysql" defaultModelType="flat" targetRuntime="MyBatis3">
+        <property name="resource" value="application.yml"/>
+
+        <!--beginningDelimiter和endingDelimiter：指明数据库的用于标记数据库对象名的符号，比如ORACLE就是双引号，MYSQL默认是`反引号； -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!-- 指定生成的java文件的编码,没有直接生成到项目时中文可能会乱码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <!--自动实现Serializable接口-->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <!--数据库基本信息-->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/alvin?serverTimezone=GMT%2B8"
+                        userId="root" password="root"/>
+
+        <!--指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!--自动生成的实体的存放包路径 -->
+        <javaModelGenerator targetPackage="com.example.spring.windmill.dataobject.generator"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!--自动生成的*Mapper.xml文件存放路径 -->
+        <sqlMapGenerator targetPackage="com.example.spring.windmill.mybatis.mapper.generator"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!--自动生成的*Mapper.java存放路径 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.spring.windmill.mapper.generator"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--对应的表名，以及实体名-->
+        <table tableName="seq" domainObjectName="SeqDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="code" javaType="java.lang.Integer" jdbcType="INTEGER"/>
+        </table>
+        <table tableName="goods" domainObjectName="GoodsDO"
+               enableCountByExample="false"
+               enableUpdateByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               selectByExampleQueryId="false">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+            <columnOverride column="code" javaType="java.lang.Long" jdbcType="BIGINT"/>
+            <columnOverride column="name" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="barcode" javaType="java.lang.String" jdbcType="VARCHAR"/>
+            <columnOverride column="price" javaType="java.math.BigDecimal" jdbcType="DECIMAL"/>
+            <columnOverride column="stock" javaType="java.lang.Long" jdbcType="BIGINT"/>
+        </table>
+    </context>
+</generatorConfiguration>
